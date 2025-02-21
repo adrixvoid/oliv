@@ -11,6 +11,7 @@ import MobileMenu from "./MobileMenu.astro";
 
 import styles from "./MainHeader.module.css";
 import logo from "../assets/logo.webp";
+import Viewport from "./ui/viewport/Viewport.astro";
 ---
 
 <Header position="sticky" class:list={["header", styles.header]}>
@@ -22,24 +23,28 @@ import logo from "../assets/logo.webp";
       <Chip variant="danger" label="We are hiring" />
     </Flex>
     <Flex justify="end" align="center">
-      <nav class:list={["desktop-only", styles.nav]}>
-        <Link href="/work">Work</Link>
-        <Link href="/services">Services</Link>
-        <Link href="/about">About</Link>
-        <Link href="/blog">Blog</Link>
-        <Link href="#" id="menu-trigger">
-          Pages <Icon icon="arrow-down" size="16" />
-        </Link>
-      </nav>
+      <Viewport media="desktop-only">
+        <nav class:list={styles.nav}>
+          <Link href="/work">Work</Link>
+          <Link href="/services">Services</Link>
+          <Link href="/about">About</Link>
+          <Link href="/blog">Blog</Link>
+          <Link href="#" id="menu-trigger">
+            Pages <Icon icon="arrow-down" size="16" />
+          </Link>
+        </nav>
+      </Viewport>
       <Button animated={true} class={styles.cta}> Let's Talk </Button>
-      <Button id="mobile-menu-trigger" variant="ghost" class="desktop-hidden">
-        <Icon
-          id="hamburger-icon"
-          class="hamburger-icon"
-          icon="hamburger"
-          size="24"
-        />
-      </Button>
+      <Viewport media="desktop-hidden">
+        <Button id="mobile-menu-trigger" variant="ghost">
+          <Icon
+            id="hamburger-icon"
+            class="hamburger-icon"
+            icon="hamburger"
+            size="24"
+          />
+        </Button>
+      </Viewport>
     </Flex>
   </Container>
   <Menu />

@@ -1,0 +1,34 @@
+/*
+  desktop: 1280
+  tablet: 1279 - 810
+  mobile: 809
+*/
+.mobile-hidden {}
+
+.mobile-only {}
+
+.desktop-only {}
+
+@media (width <=809px) {
+  .mobile-hidden {
+    display: none;
+  }
+}
+
+@media (width >=810px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
+@media (width >=1279px) {
+  .desktop-hidden {
+    display: none;
+  }
+}
+
+@media (width <=1279px) {
+  .desktop-only {
+    display: none;
+  }
+}

@@ -19,6 +19,7 @@ import work from "../data/work.json";
 import blog from "../data/blog.json";
 
 import BrandingCard from "./ui/card/BrandingCard.astro";
+import Viewport from "./ui/viewport/Viewport.astro";
 ---
 
 <MainHeader />
@@ -165,8 +166,8 @@ import BrandingCard from "./ui/card/BrandingCard.astro";
             </div>
           </Fragment>
         </ValuesCard>
-        <div class="card-values desktop-only"></div>
-        <div class="card-values desktop-only"></div>
+        <Viewport class="card-values" media="desktop-only" />
+        <Viewport class="card-values" media="desktop-only" />
         <ValuesCard variant="muted" style="min-height: 45vh;">
           <Fragment slot="title">Collaboration</Fragment>
           <Fragment slot="footer">
@@ -200,7 +201,7 @@ import BrandingCard from "./ui/card/BrandingCard.astro";
     <article class="article">
       <Container class="spacing-top">
         <div class="grid-3-2center-desktop grid-2-end-tablet">
-          <div class="mobile-hidden"></div>
+          <Viewport media="mobile-hidden" />
           <div>
             <Heading element="h3" size="h3">
               Crafting Exceptional Digital Experiences Across All Platforms: Our
@@ -245,27 +246,29 @@ import BrandingCard from "./ui/card/BrandingCard.astro";
       </div>
     </Flex>
     <div class="grid-4-desktop grid-2-tablet">
-      <Card
-        variant="green"
-        class="card"
-        style="padding: 2rem;min-height: 50vh;"
-        class="desktop-only"
-      >
-        <Flex direction="column" align="start" style="height:100%">
-          <Heading element="h4" size="meta" uppercase="true">
-            Join the team
-          </Heading>
-          <Heading element="h5" size="h3">
-            Want to shape the future of branding?
-          </Heading>
-          <Text style="margin: 0">
-            Join us and create bold, innovative brands that inspire change.
-          </Text>
-          <Button style="margin-top: auto" variant="primary" animated={true}
-            >Apply Now</Button
-          >
-        </Flex>
-      </Card>
+      <Viewport media="desktop-only">
+        <Card
+          variant="green"
+          class="card"
+          style="padding: 2rem;min-height: 50vh;"
+          class="desktop-only"
+        >
+          <Flex direction="column" align="start" style="height:100%">
+            <Heading element="h4" size="meta" uppercase="true">
+              Join the team
+            </Heading>
+            <Heading element="h5" size="h3">
+              Want to shape the future of branding?
+            </Heading>
+            <Text style="margin: 0">
+              Join us and create bold, innovative brands that inspire change.
+            </Text>
+            <Button style="margin-top: auto" variant="primary" animated={true}
+              >Apply Now</Button
+            >
+          </Flex>
+        </Card>
+      </Viewport>
       <ProfileCard
         title="Annette Black"
         image="./images/annette.webp"
@@ -283,7 +286,7 @@ import BrandingCard from "./ui/card/BrandingCard.astro";
         badge="Marketing"
       />
     </div>
-    <div class="desktop-hidden">
+    <Viewport class="desktop-hidden">
       <Card variant="green" class="card" style="margin-top:8rem;padding: 2rem;">
         <Flex direction="column" align="start" style="height:100%">
           <Heading element="h4" size="meta" uppercase="true">
@@ -300,7 +303,7 @@ import BrandingCard from "./ui/card/BrandingCard.astro";
           >
         </Flex>
       </Card>
-    </div>
+    </Viewport>
   </Container>
 </section>
 <section id="testimonials">
