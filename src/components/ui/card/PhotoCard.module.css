@@ -14,7 +14,7 @@
 
 @media (width >=810px) {
   .imageContainer {
-    cursor: url('./icons/north_east.svg'), auto;
+    cursor: url('/icons/north_east.svg'), auto;
   }
 }
 
