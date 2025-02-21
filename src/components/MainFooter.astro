@@ -16,7 +16,7 @@ import Text from "./ui/text/Text.astro";
     <nav class="grid-4-desktop grid-2-tablet">
       <div>
         <div class={styles.logo}>
-          <img src={logo.src} alt="Oliv" />
+          <img src={logo.src} alt="Oliv" aria-hidden="true" />
         </div>
         <Flex
           justify="start"
@@ -76,7 +76,7 @@ import Text from "./ui/text/Text.astro";
             Gola Templates
           </Link>
         </Text>
-        <Text>Dev: Adrian Lambrese</Text>
+        <Text>Web Development: Adrian Lambrese</Text>
         <Link href="#">Terms and Conditions</Link>
       </Flex>
     </div>

@@ -2,6 +2,12 @@
   position: relative;
 }
 
+.imageContainer {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
 .image {
   object-fit: cover;
   width: 100%;
@@ -18,4 +24,49 @@
   gap: .5rem;
   justify-content: space-between;
   align-items: center;
+}
+
+.socialContainer {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+}
+
+@media (width >=1280px) {
+  .badge {
+    translate: 0 200%;
+    opacity: 0;
+    animation-timing-function: ease-out;
+    will-change: opacity;
+  }
+
+  .badge:nth-of-type(3) {
+    animation-duration: 200ms;
+  }
+
+  .badge:nth-of-type(2) {
+    animation-duration: 300ms;
+  }
+
+  .badge:nth-of-type(1) {
+    animation-duration: 400ms;
+  }
+
+  @keyframes showIcon {
+    from {
+      opacity: 0;
+      translate: 0 200%;
+    }
+
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
+  .profileCard:hover .badge {
+    animation-name: showIcon;
+    opacity: 1;
+    translate: 0 0;
+  }
 }

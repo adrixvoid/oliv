@@ -5,6 +5,9 @@ import Heading from "../text/Heading.astro";
 import Chip from "../chip/Chip.astro";
 
 import styles from "./ProfileCard.module.css";
+import Flex from "../flex/Flex.astro";
+import Badge from "../badge/Badge.astro";
+import Icon from "../icon/Icon.astro";
 
 export type ProfileCardProp = CardProps & {
   class?: string;
@@ -22,10 +25,32 @@ const {
   class: className = "",
   ...props
 } = Astro.props as ProfileCardProp;
+
+console.log("props", props);
 ---
 
 <Card class:list={["card", className, styles.profileCard]} {...props}>
-  <img class={styles.image} src={image} aria-hidden="true" />
+  <div class={styles.imageContainer}>
+    <div class={styles.socialContainer}>
+      <Flex
+        justify="start"
+        align="center"
+        gap=".8rem"
+        style="margin-top: 2rem;"
+      >
+        <Badge variant="primary" class={styles.badge}>
+          <Icon icon="instagram-logo" size="16px" />
+        </Badge>
+        <Badge variant="primary" class={styles.badge}>
+          <Icon icon="twitter-logo" size="16px" />
+        </Badge>
+        <Badge variant="primary" class={styles.badge}>
+          <Icon icon="framer-logo" size="16px" />
+        </Badge>
+      </Flex>
+    </div>
+    <img class={styles.image} src={image} aria-hidden="true" />
+  </div>
   <div class={styles.contentOverflow}>
     <Heading element="h4" size="h6">{title}</Heading>
     <Chip variant="outlined">{badge}</Chip>
