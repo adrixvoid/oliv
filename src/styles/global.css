@@ -1,5 +1,6 @@
 html,
 body {
+  background-color: hsl(var(--background));
   font-family: "Manrope", serif;
   font-optical-sizing: auto;
   font-size: 1rem;
