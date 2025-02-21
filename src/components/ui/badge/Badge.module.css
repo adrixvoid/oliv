@@ -134,12 +134,10 @@ a.badge:hover {
 /* Icons */
 
 .badge svg {
-    min-height: 16px;
-    min-width: 16px;
-    width: 16px;
-    height: 16px;
-    width: 1.9cap;
-    height: 1.9cap;
+    min-height: 12px;
+    min-width: 12px;
+    /* width: 1.5cap;
+    height: 1.5cap; */
     max-height: 100%;
     max-width: 100%;
     object-fit: contain;
