@@ -1,0 +1,155 @@
+@import url('./reset.css');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import url('./palette.css');
+
+html,
+body {
+  font-family: "Manrope", serif;
+  font-optical-sizing: auto;
+  font-size: 1rem;
+}
+
+a {
+  color: hsl(var(--foreground));
+}
+
+.spacing-top {
+  padding-top: 7rem;
+}
+
+.grid-fluid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+@media (width >=1280px) {
+  .grid-2-desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .grid-4-desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .grid-3-2center-desktop {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .grid-3-2end-desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    gap: 2.5rem;
+  }
+
+  .grid-2-2end-desktop {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (810px <=width <=1279px) {
+  .grid-2-tablet {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .grid-3-tablet {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .grid-4-tablet {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .grid-2-end-tablet {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+  }
+}
+
+@media (width <=809px) {
+
+  .grid-2-mobile,
+  .grid-2-center-mobile,
+  .grid-2-end-mobile,
+  .grid-4-mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+hr {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid hsl(0, 0%, 95%);
+  margin-bottom: 2rem;
+}
+
+.section-intro-title {
+  font-weight: 400;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 48px;
+  font-weight: 300;
+  margin-bottom: clamp(1rem, 3rem, 3.5rem);
+}
+
+.image-wrapper {
+  object-fit: cover;
+  width: 100%;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+/*
+  desktop: 1280
+  tablet: 1279 - 810
+  mobile: 809
+*/
+@media (width <=809px) {
+  .mobile-hidden {
+    display: none;
+  }
+}
+
+@media (width >=810px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
+@media (width >=1279px) {
+  .desktop-hidden {
+    display: none;
+  }
+}
+
+@media (width <=1279px) {
+  .desktop-only {
+    display: none;
+  }
+}

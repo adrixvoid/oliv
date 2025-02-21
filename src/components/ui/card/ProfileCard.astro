@@ -1,0 +1,33 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import Card, { type CardProps } from "./Card.astro";
+import Heading from "../text/Heading.astro";
+import Chip from "../chip/Chip.astro";
+
+import styles from "./ProfileCard.module.css";
+
+export type ProfileCardProp = CardProps & {
+  class?: string;
+  image?: string;
+  title?: string;
+  badge?: string;
+  description?: string;
+};
+
+const {
+  image,
+  title,
+  badge,
+  description,
+  class: className = "",
+  ...props
+} = Astro.props as ProfileCardProp;
+---
+
+<Card class:list={["card", className, styles.profileCard]} {...props}>
+  <img class={styles.image} src={image} aria-hidden="true" />
+  <div class={styles.contentOverflow}>
+    <Heading element="h4" size="h6">{title}</Heading>
+    <Chip variant="outlined">{badge}</Chip>
+  </div>
+</Card>

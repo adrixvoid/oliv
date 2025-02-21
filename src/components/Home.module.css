@@ -1,0 +1,17 @@
+.hero {
+  display: flex;
+  min-height: 700px;
+  height: 80vh;
+  align-items: center;
+  padding-block: 2rem;
+}
+
+.heroTitle {
+  font-size: clamp(1.3rem, 6vw, 6rem);
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.heroWrapper {
+  max-width: 75ch;
+}

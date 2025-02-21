@@ -1,0 +1,93 @@
+.text {
+  line-height: 1.52;
+  font-weight: 300;
+}
+
+.xl {
+  font-size: clamp(2rem, 2.25vw, 2.5rem);
+  font-size: 24px;
+  font-size: 1.5rem;
+}
+
+.lg {
+  font-size: clamp(1.7rem, 1.75vw, 1.8rem);
+  font-size: 20px;
+  font-size: 1.25rem;
+}
+
+.md {
+  font-size: clamp(1.125rem, 1.5, 1.5rem);
+  font-size: 18px;
+  font-size: 1.12rem;
+}
+
+.default {
+  font-size: clamp(.9rem, 1.25vw, 1rem);
+  /* font-size: 16px;
+  font-size: 1rem; */
+  line-height: 1.7;
+}
+
+.sm {
+  font-size: clamp(.85rem, 1.1vw, .94rem);
+  line-height: 1.5;
+  /* font-size: 15px;
+  font-size: 0.94rem; */
+}
+
+.metaLarge {
+  font-size: clamp(.8rem, 1vw, .87rem);
+  /* font-size: 14px;
+  font-size: 0.87rem; */
+}
+
+.meta {
+  font-size: clamp(0.7rem, 1vw, 0.75rem);
+  /* font-size: 12px;
+  font-size: 0.75rem; */
+}
+
+.medium {
+  font-size: 96px;
+}
+
+.small {
+  font-size: 80px;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.balanced {
+  text-wrap: balance;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.strong {
+  font-weight: 700;
+}
+
+.shrink {
+  letter-spacing: -.016em;
+}
+
+.nav {
+  font-size: clamp(.8rem, 1vw, .87rem);
+  letter-spacing: 0.5;
+}

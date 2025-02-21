@@ -1,0 +1,61 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cva, type VariantProps } from "class-variance-authority";
+import styles from "./Badge.module.css";
+
+export const badgeVariants = cva(styles.badge, {
+  variants: {
+    variant: {
+      default: styles.default,
+      primary: styles.primary,
+      ghost: styles.ghost,
+    },
+    size: {
+      md: styles.medium,
+      sm: styles.small,
+      lg: styles.large,
+      xl: styles.xlarge,
+    },
+    width: {
+      ["full-width"]: styles["full-width"],
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+    size: "md",
+  },
+});
+
+export type BadgeProps = (HTMLAttributes<"a"> | HTMLAttributes<"button">) &
+  VariantProps<typeof badgeVariants> & {
+    asLink?: boolean;
+    class?: string;
+  };
+
+const {
+  asLink,
+  variant,
+  size,
+  width,
+  class: className = "",
+  ...props
+} = Astro.props as BadgeProps;
+---
+
+{
+  asLink ? (
+    <a
+      class={badgeVariants({ variant, size, width, className })}
+      {...(props as HTMLAttributes<"a">)}
+    >
+      <slot />
+    </a>
+  ) : (
+    <button
+      class={badgeVariants({ variant, size, width, className })}
+      {...(props as HTMLAttributes<"button">)}
+    >
+      <slot />
+    </button>
+  )
+}

@@ -1,0 +1,163 @@
+---
+import Container from "./ui/container/Container.astro";
+import Flex from "./ui/flex/Flex.astro";
+import Link from "./ui/link/Link.astro";
+import Heading from "./ui/text/Heading.astro";
+import Text from "./ui/text/Text.astro";
+---
+
+<Container class="main-menu">
+  <div class="container">
+    <nav class="grid-4-desktop grid-2-tablet">
+      <div>
+        <Heading element="h6" size="h6">Pages</Heading>
+        <hr />
+        <ul>
+          <li><Link href="#">Home</Link></li>
+          <li><Link href="#">Services</Link></li>
+          <li><Link href="#">About</Link></li>
+          <li><Link href="#">Jobs</Link></li>
+          <li><Link href="#">Contact</Link></li>
+        </ul>
+      </div>
+      <div>
+        <Heading element="h6" size="h6">CMS</Heading>
+        <hr />
+        <ul>
+          <li><Link href="#">Work</Link></li>
+          <li><Link href="#">Work Category</Link></li>
+          <li><Link href="#">Work Single</Link></li>
+          <li><Link href="#">Blog</Link></li>
+          <li><Link href="#">Blog Category</Link></li>
+          <li><Link href="#">Blog Single</Link></li>
+        </ul>
+      </div>
+      <div>
+        <Heading element="h6" size="h6">Utility Pages</Heading>
+        <hr />
+        <ul>
+          <li><Link href="#">404 Error Page</Link></li>
+          <li><Link href="#">Licensing</Link></li>
+        </ul>
+      </div>
+      <div>
+        <Heading element="h6" size="h6">Utility Pages</Heading>
+        <hr />
+        <ul>
+          <li><Link href="#">Twitter</Link></li>
+          <li><Link href="#">Instagram</Link></li>
+          <li><Link href="#">Behance</Link></li>
+          <li><Link href="#">Dribble</Link></li>
+        </ul>
+      </div>
+    </nav>
+    <hr style="margin-block: 2rem" />
+    <div>
+      <Flex justify="between" align="center">
+        <Text>Design: © Made by Gola Templates</Text>
+        <Text>Dev: Adrian Lambrese</Text>
+        <Link href="#">Terms and Conditions</Link>
+      </Flex>
+    </div>
+  </div>
+</Container>
+
+<style>
+  .main-menu {
+    background-color: hsl(var(--foreground));
+    z-index: 1;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    translate: -50% 0;
+    overflow: clip;
+    height: 0;
+    opacity: 0;
+    display: none;
+
+    interpolate-size: allow-keywords;
+    transition-behavior: allow-discrete;
+    transition-duration: 200ms;
+    transition-property: height, display, opacity;
+    animation-direction: alternate;
+    animation-timing-function: ease-out;
+  }
+
+  .main-menu .container {
+    padding: 4rem;
+  }
+
+  .main-menu,
+  .main-menu a {
+    color: hsl(var(--background)) !important;
+  }
+
+  .main-menu hr {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid hsl(0, 0%, 95%, 0.1);
+    margin-bottom: 2rem;
+  }
+
+  .main-menu h6,
+  .main-menu ul li {
+    line-height: 2.5rem;
+  }
+
+  .main-menu ul li a {
+    font-size: clamp(0.8rem, 1vw, 0.87rem);
+    letter-spacing: 0.5;
+  }
+
+  .show-menu {
+    outline: 1px solid green;
+    display: block;
+    height: auto;
+    opacity: 1;
+
+    @starting-style {
+      opacity: 0;
+      height: 0;
+    }
+  }
+</style>
+
+<script>
+  const menuElement = document.querySelector(".main-menu");
+  const triggerElement = document.querySelector("#menu-trigger");
+
+  const escapeHandler = (event: KeyboardEvent) => {
+    if (event.key === "Escape") {
+      hideMenu();
+    }
+  };
+
+  const showMenu = () => {
+    if (!menuElement?.classList.contains("show-menu")) {
+      menuElement?.classList.add("show-menu");
+      document.addEventListener("keydown", escapeHandler);
+    }
+  };
+
+  const hideMenu = () => {
+    document.removeEventListener("keydown", escapeHandler);
+    if (menuElement?.classList.contains("show-menu")) {
+      menuElement?.classList.remove("show-menu");
+    }
+  };
+
+  const toggleMenu = () => {
+    if (!menuElement?.classList.contains("show-menu")) {
+      showMenu();
+    } else {
+      hideMenu();
+    }
+  };
+
+  triggerElement?.addEventListener("click", (event) => {
+    event.preventDefault();
+    toggleMenu();
+  });
+  triggerElement?.addEventListener("mouseenter", showMenu);
+  menuElement?.addEventListener("mouseleave", hideMenu);
+</script>

@@ -1,0 +1,23 @@
+---
+import clsx from "clsx";
+import Text from "../text/Text.astro";
+import Card, { type CardProps } from "./Card.astro";
+import styles from "./ServiceCard.module.css";
+
+const { class: className = "", ...props } = Astro.props as CardProps;
+---
+
+<Card class={clsx(styles.card, className)} {...props}>
+  <header class={styles.header}>
+    <Text element="h6" size="meta" uppercase="true" class={styles.title}>
+      <slot name="title" />
+    </Text>
+  </header>
+  <div class={styles.description}>
+    <slot name="description" />
+  </div>
+  <slot class={styles.body} />
+  <footer class={styles.footer}>
+    <slot name="footer" />
+  </footer>
+</Card>

@@ -1,0 +1,35 @@
+.card {
+  --padding: .5rem 2rem;
+  padding-block: 2.5rem;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  padding: var(--padding);
+  letter-spacing: 0.05rem;
+  font-weight: 300;
+}
+
+.description {
+  max-width: 30ch;
+  color: hsl(var(--muted-foreground));
+  padding: var(--padding);
+  color: hsl(var(--muted-foreground));
+}
+
+.description p {
+  margin: 0;
+}
+
+.footer {
+  padding: var(--padding);
+  margin-top: auto;
+}
+
+.footer a {
+  font-size: 0.85em;
+  color: hsl(var(--foreground));
+  text-underline-offset: 0.45em;
+}

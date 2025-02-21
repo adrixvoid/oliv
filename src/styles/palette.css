@@ -1,0 +1,26 @@
+:root {
+  --background: 0, 0%, 100%;
+  --foreground: 0 0% 8%;
+  --link: 0 0% 8%;
+  --card: 303 100% 93%;
+  --card-foreground: 266.22 54.22% 51.18%;
+  --popover: 262.27 71.4% 4.1%;
+  --popover-foreground: 210 20% 98%;
+  --button: 0 0% 100%;
+  --button-foreground: 0 0% 8%;
+  --primary: 0 0% 8%;
+  --primary-foreground: 0 0 100%;
+  --secondary: 240.92 28.18% 19.35%;
+  --secondary-foreground: 210 20% 98%;
+  --muted: 0, 0%, 98%;
+  --muted-foreground: 0, 0%, 47%;
+  --accent: 314.16 100% 65.1%;
+  --accent-foreground: 260 41.45% 9.18%;
+  --destructive: 337 86% 37%;
+  --destructive-foreground: 210 20% 98%;
+  --border: 0, 0%, 95%;
+  --input: 0 0% 100%;
+  --ring: 263.4 70% 50.4%;
+  --radius: 0.5rem;
+  --pink: 306 100% 83%;
+}

@@ -1,0 +1,61 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cva, type VariantProps } from "class-variance-authority";
+import styles from "./Flex.module.css";
+import clsx from "clsx";
+
+const cvaVariants = cva(styles.flex, {
+  variants: {
+    justify: {
+      start: styles["justify-start"],
+      end: styles["justify-end"],
+      center: styles["justify-center"],
+      between: styles["justify-between"],
+      around: styles["justify-around"],
+    },
+    align: {
+      start: styles["align-start"],
+      end: styles["align-end"],
+      center: styles["align-center"],
+    },
+    direction: {
+      row: styles.row,
+      column: styles.column,
+    },
+    mobile: {
+      "direction-row": styles["mobile-row"],
+      "direction-column": styles["mobile-column"],
+    },
+  },
+  defaultVariants: {
+    justify: "start",
+    direction: "row",
+  },
+});
+
+type Props = HTMLAttributes<"div"> &
+  VariantProps<typeof cvaVariants> & {
+    gap?: string;
+  };
+
+const {
+  class: className = "",
+  justify,
+  align,
+  direction,
+  mobile,
+  gap,
+  style,
+  ...props
+} = Astro.props as Props;
+
+const inlineGap = gap ? `gap: ${gap}` : "";
+---
+
+<div
+  class={cvaVariants({ justify, align, direction, mobile, className })}
+  style={`${style}; ${inlineGap}`}
+  {...props}
+>
+  <slot />
+</div>

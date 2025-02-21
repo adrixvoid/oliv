@@ -1,0 +1,33 @@
+.card {
+  --border: 1px;
+  /* #F1F6F5 */
+  --green: 168, 22%, 95%;
+  /* #FFFAE7 */
+  --yellow: 47, 100%, 95%;
+  /* #F8EDE3 */
+  --red: 29, 60%, 93%;
+  /* #F1F5F9 */
+  --blue: 210, 40%, 96%;
+  /* #F9F9F9 */
+  --muted: 0, 0%, 98%;
+}
+
+.green {
+  background-color: hsl(var(--green));
+}
+
+.yellow {
+  background-color: hsl(var(--yellow));
+}
+
+.red {
+  background-color: hsl(var(--red));
+}
+
+.blue {
+  background-color: hsl(var(--blue));
+}
+
+.muted {
+  background-color: hsl(var(--muted));
+}

@@ -1,0 +1,201 @@
+.chip {
+  --border: 1px;
+  /* #F1F6F5 */
+  --color-success: 168, 22%, 95%;
+  /* #FFFAE7 */
+  --color-warning: 47, 100%, 95%;
+  /* #F8EDE3 */
+  --color-danger: 29, 60%, 93%;
+  /* #F1F5F9 */
+  --color-info: 210, 40%, 96%;
+  /* #F9F9F9 */
+  --muted: 0, 0%, 98%;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  transition: all 150ms ease-in-out;
+  cursor: default;
+
+  color: hsl(var(--foreground));
+}
+
+.default {
+  background: hsl(var(--accent) / 0.5);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.dismissible {
+  padding-right: 0.5rem;
+}
+
+.dismissButton {
+  min-width: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.125rem;
+  margin-left: 0.25rem;
+  border-radius: 9999px;
+  border-width: 0;
+  transition: all 150ms ease-in-out;
+  opacity: 0.7;
+  /* background-color: hsl(var(--primary)); */
+  /* color: hsl(var(--primary-foreground)); */
+}
+
+.dismissButton:hover {
+  opacity: 1;
+}
+
+/* Variants */
+.filled {
+  background-color: hsl(var(--button));
+}
+
+.filled:hover {
+  background-color: hsl(var(--button-foreground));
+}
+
+.text {
+  text-overflow: ellipsis;
+
+  /* Needed to make it work */
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.outlined {
+  background-color: transparent;
+  border: 1px solid hsl(var(--foreground));
+}
+
+.outlined:hover {
+  background-color: rgba(226, 232, 240, 0.1);
+}
+
+/* Colors */
+.muted {
+  background-color: hsl(var(--muted));
+  /* opacity: 0.5; */
+}
+
+.primary {
+  background-color: hsl(var(--button-foreground));
+  color: hsl(var(--button));
+}
+
+.inverse {
+  background-color: hsl(var(--button));
+  color: hsl(var(--button-foreground));
+}
+
+.primary.outlined {
+  border-color: hsl(var(--foreground));
+  color: hsl(var(--foreground));
+  background-color: transparent;
+}
+
+.primary.outlined:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.info {
+  background-color: hsl(var(--color-info));
+  color: hsl(var(--color-info-foreground));
+}
+
+.info:hover {
+  background-color: color-mix(in hsl, hsl(var(--color-info)), white 25%);
+}
+
+.info.outlined {
+  border-color: color-mix(in hsl, hsl(var(--color-info)), black 5%);
+  color: hsl(var(--color-info-foreground));
+  background-color: hsl(var(--color-info-foreground), 0.01);
+}
+
+.info.outlined:hover {
+  background-color: hsl(var(--color-info), 0.1);
+}
+
+.info .dismissButton {
+  color: hsl(var(--color-info-foreground));
+  background-color: hsl(var(--background));
+}
+
+.info.outlined .dismissButton {
+  background-color: hsl(var(--color-info));
+  color: hsl(var(--color-info-foreground));
+}
+
+.success {
+  background-color: hsl(var(--color-success));
+}
+
+.warning {
+  background-color: hsl(var(--color-warning));
+  color: hsl(var(--color-warning-foreground));
+}
+
+.warning:hover {
+  background-color: color-mix(in hsl, hsl(var(--color-warning)), white 25%);
+}
+
+.warning.outlined {
+  border-color: color-mix(in hsl, hsl(var(--color-warning)), black 5%);
+  color: hsl(var(--color-warning-foreground));
+  background-color: hsl(var(--color-warning), 0.01);
+}
+
+.warning.outlined:hover {
+  background-color: hsl(var(--color-warning), 0.3);
+}
+
+.warning .dismissButton {
+  color: hsl(var(--color-warning-foreground));
+  background-color: hsl(var(--background));
+}
+
+.warning.outlined .dismissButton {
+  background-color: hsl(var(--color-warning));
+  color: hsl(var(var(--button-warning-dark)));
+}
+
+.danger {
+  background-color: hsl(var(--color-danger));
+  color: hsl(var(--color-danger-foreground));
+}
+
+.danger:hover {
+  background-color: color-mix(in hsl, hsl(var(--color-danger)), white 25%);
+}
+
+.danger.outlined {
+  border-color: hsl(var(--color-danger));
+  color: hsl(var(--color-danger));
+  background-color: transparent;
+}
+
+.danger.outlined:hover {
+  background-color: hsl(var(--color-danger), 0.3);
+}
+
+.danger .dismissButton {
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--background));
+  border-color: hsl(var(--color-danger));
+}
+
+.danger.outlined .dismissButton {
+  background-color: hsl(var(--color-danger));
+  color: hsl(var(--background));
+}

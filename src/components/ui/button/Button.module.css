@@ -1,0 +1,181 @@
+.button {
+    --radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+
+    gap: 0.5rem;
+    padding-left: 1.75cap;
+    padding-right: 1.75cap;
+    min-height: 1.75cap;
+
+    border-radius: var(--radius);
+    font-size: .875rem;
+    line-height: 1.25;
+    font-weight: 400;
+    outline-color: hsl(var(--ring));
+
+    will-change: color, background-color, border-color, text-decoration-color, box-shadow, fill, stroke;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+
+    fill: currentcolor;
+}
+
+.button:has(>svg) {
+    transition: none;
+    padding: 0;
+}
+
+.button:active {
+    box-shadow: none;
+}
+
+.button:hover {
+    text-decoration: none;
+}
+
+.button:focus-visible {
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: -2px;
+}
+
+.button:disabled,
+.button:disabled:hover,
+.button:disabled:active,
+.button:disabled:focus-within {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+a.button,
+a.button:hover {
+    text-decoration: none;
+}
+
+/**
+    Button Color
+*/
+
+.default {
+    color: hsl(var(--button-foreground));
+    background-image: linear-gradient(to top, hsl(var(--button-foreground)) 50%, hsl(var(--button)) 50%);
+    background-position: top left;
+    background-size: 100% 200%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: hsl(var(--button-foreground) / 0.8);
+    text-underline-offset: 4px;
+    text-decoration: none;
+}
+
+.default:hover {
+    background-position: bottom left;
+    color: hsl(var(--button));
+    border-color: hsla(0, 0%, 100%, 0.5);
+    border: 1px solid hsl(var(--button-foreground));
+}
+
+.primary {
+    border-color: hsl(var(--button-foreground));
+    background-color: hsl(var(--button-foreground));
+    background-image: linear-gradient(to top, hsl(var(--accent)) 50%, hsl(var(--button-foreground)) 50%);
+    background-position: top left;
+    background-size: 100% 200%;
+    color: hsl(var(--button));
+}
+
+.primary:hover {
+    /* color: hsl(var(--button-foreground)); */
+    background-position: bottom left;
+}
+
+.ghost {
+    border-color: transparent;
+    background-color: transparent;
+    color: currentColor;
+}
+
+.ghost:hover {
+    color: hsl(var(--color-brand5));
+    fill: currentColor;
+}
+
+/* .ghost:focus-within {} */
+
+/**
+    Button Sizes
+*/
+
+.small {
+    gap: 0.45rem;
+    padding: 1cap 1.75cap;
+    min-height: 2cap;
+    min-width: 2rem;
+    font-size: .75rem;
+    line-height: 1;
+    border-radius: var(--radius-sm);
+}
+
+.medium {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    padding: 1cap 1.5cap;
+    min-width: 2rem;
+    min-height: 2rem;
+    line-height: 1.2;
+    font-size: var(--text-md);
+    border-radius: var(--radius);
+}
+
+.large {
+    gap: 0.55rem;
+    padding: 0 2.5cap;
+    min-width: 2rem;
+    line-height: 2;
+    font-size: clamp(var(--text-lg), 2.5vw, calc(var(--text-lg) + 0.5rem));
+    font-weight: 500;
+    border-radius: var(--radius-lg);
+}
+
+.xlarge {
+    gap: 0.55rem;
+    padding: 0 2.5cap;
+    min-width: 2rem;
+    line-height: 2;
+    font-size: clamp(var(--text-xl), 2.5vw, calc(var(--text-lg) + 0.5rem));
+    font-weight: 500;
+    border-radius: var(--radius-xl);
+}
+
+
+/* Icons */
+
+.button svg {
+    min-height: 16px;
+    min-width: 16px;
+    width: 16px;
+    height: 16px;
+    width: 1.9cap;
+    height: 1.9cap;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.full-width {
+    width: 100%
+}
+
+.noPadding {
+    padding: 0;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    .primary:hover {
+        background-color: hsl(var(--primary) / 0.8);
+    }
+}

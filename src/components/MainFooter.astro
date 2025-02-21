@@ -1,0 +1,89 @@
+---
+import Container from "./ui/container/Container.astro";
+import Link from "./ui/link/Link.astro";
+import Heading from "./ui/text/Heading.astro";
+
+import logo from "../assets/logo.webp";
+import styles from "./MainHeader.module.css";
+import Icon from "./ui/icon/Icon.astro";
+import Badge from "./ui/badge/Badge.astro";
+import Flex from "./ui/flex/Flex.astro";
+import Text from "./ui/text/Text.astro";
+---
+
+<footer class="footer">
+  <Container class="spacing-top">
+    <nav class="grid-4-desktop grid-2-tablet">
+      <div>
+        <div class={styles.logo}>
+          <img src={logo.src} alt="Oliv" />
+        </div>
+        <Flex
+          justify="start"
+          align="center"
+          gap=".8rem"
+          style="margin-top: 2rem;"
+        >
+          <Badge>
+            <Icon icon="instagram-logo" size="12px" />
+          </Badge>
+          <Badge>
+            <Icon icon="twitter-logo" size="12px" />
+          </Badge>
+          <Badge>
+            <Icon icon="framer-logo" size="12px" />
+          </Badge>
+        </Flex>
+      </div>
+      <div>
+        <Heading element="h6" size="h6">Pages</Heading>
+        <hr />
+        <ul>
+          <li><Link href="#">Home</Link></li>
+          <li><Link href="#">Services</Link></li>
+          <li><Link href="#">About</Link></li>
+          <li><Link href="#">Jobs</Link></li>
+          <li><Link href="#">Contact</Link></li>
+        </ul>
+      </div>
+      <div>
+        <Heading element="h6" size="h6">CMS</Heading>
+        <hr />
+        <ul>
+          <li><Link href="#">Work</Link></li>
+          <li><Link href="#">Work Category</Link></li>
+          <li><Link href="#">Work Single</Link></li>
+          <li><Link href="#">Blog</Link></li>
+          <li><Link href="#">Blog Category</Link></li>
+          <li><Link href="#">Blog Single</Link></li>
+        </ul>
+      </div>
+      <div>
+        <Heading element="h6" size="h6">Utility Pages</Heading>
+        <hr />
+        <ul>
+          <li><Link href="#">404 Error Page</Link></li>
+          <li><Link href="#">Licensing</Link></li>
+        </ul>
+      </div>
+    </nav>
+    <hr />
+    <div style="margin-block: 2rem">
+      <Flex justify="between" align="center">
+        <Text>Design: © Made by Gola Templates</Text>
+        <Text>Dev: Adrian Lambrese</Text>
+        <Link href="#">Terms and Conditions</Link>
+      </Flex>
+    </div>
+  </Container>
+</footer>
+<style>
+  .footer h6,
+  .footer ul li {
+    line-height: 2.5rem;
+  }
+  .footer ul li a {
+    font-size: clamp(0.8rem, 1vw, 0.87rem);
+    letter-spacing: 0.5;
+  }
+</style>

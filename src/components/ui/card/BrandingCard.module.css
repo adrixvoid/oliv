@@ -1,0 +1,26 @@
+.brandingCard {
+  color: hsl(var(--foreground))
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-block: 1rem;
+  gap: 1rem;
+}
+
+.description {
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.link {
+  text-underline-offset: .2rem;
+  color: hsl(var(--foreground))
+}

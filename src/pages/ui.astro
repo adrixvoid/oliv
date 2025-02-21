@@ -1,0 +1,65 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/ui/button/Button.astro";
+import "../styles/global.css";
+import Flex from "../components/ui/flex/Flex.astro";
+import Heading from "../components/ui/text/Heading.astro";
+import Text from "../components/ui/text/Text.astro";
+import Chip from "../components/ui/chip/Chip.astro";
+import Container from "../components/ui/container/Container.astro";
+---
+
+<Layout>
+  <Container>
+    <Button>Basic</Button>
+    <Button variant="primary">Primary</Button>
+    <Button variant="outline">Primary</Button>
+
+    <hr style={{ margin: "4rem 0" }} />
+
+    <Flex direction="column">
+      <Heading element="h1" size="h1"
+        >Building Brands, One Success Story at a Time.
+      </Heading>
+      <Heading element="h2" size="h2"
+        >Building Brands, One Success Story at a Time.
+      </Heading>
+      <Heading element="h3" size="h3"
+        >Building Brands, One Success Story at a Time.
+      </Heading>
+      <Heading element="h4" size="h4"
+        >Building Brands, One Success Story at a Time.
+      </Heading>
+      <Heading element="h5" size="h5"
+        >Building Brands, One Success Story at a Time.
+      </Heading>
+      <Heading element="h6" size="h6"
+        >Building Brands, One Success Story at a Time.
+      </Heading>
+      <Heading>Title</Heading>
+    </Flex>
+    <hr style={{ margin: "4rem 0" }} />
+    <Flex>
+      <Text size="xl">Lorem ipsum</Text>
+      <Text size="lg">Lorem ipsum</Text>
+      <Text size="md">Lorem ipsum</Text>
+      <Text size="default">Lorem ipsum</Text>
+      <Text size="sm">Lorem ipsum</Text>
+      <Text size="ml">Lorem ipsum</Text>
+      <Text size="meta">Lorem ipsum</Text>
+      <Text>Lorem ipsum</Text>
+    </Flex>
+
+    <hr style={{ margin: "4rem 0" }} />
+
+    <Chip>We are hiring</Chip>
+    <Chip variant="outlined">We are hiring</Chip>
+    <Chip variant="muted">We are hiring</Chip>
+    <Chip variant="primary">We are hiring</Chip>
+    <Chip variant="inverse">We are hiring</Chip>
+    <Chip variant="info">We are hiring</Chip>
+    <Chip variant="warning">We are hiring</Chip>
+    <Chip variant="success">We are hiring</Chip>
+    <Chip variant="danger">We are hiring</Chip>
+  </Container>
+</Layout>

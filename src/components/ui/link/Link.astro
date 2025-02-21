@@ -1,0 +1,25 @@
+---
+import { cva, type VariantProps } from "class-variance-authority";
+import type { HTMLAttributes } from "astro/types";
+import styles from "./Link.module.css";
+
+const cvaVariants = cva(styles.link, {
+  variants: {
+    variant: {
+      default: styles.default,
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
+
+type Props = HTMLAttributes<"a"> & VariantProps<typeof cvaVariants>;
+
+const { class: className = "", variant, ...props } = Astro.props as Props;
+---
+
+<a {...props} class={cvaVariants({ variant, className })}>
+  <slot />
+  <span class={styles.underline}></span>
+</a>

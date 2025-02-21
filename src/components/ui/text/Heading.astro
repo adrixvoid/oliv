@@ -1,0 +1,28 @@
+---
+import { headingVariants, type PropsHeading } from "./Text.cva";
+
+const {
+  element: Component = "h1",
+  class: className = "",
+  align,
+  size,
+  italic,
+  uppercase,
+  shrink,
+  ...props
+} = Astro.props as PropsHeading;
+---
+
+<Component
+  class={headingVariants({
+    size,
+    align,
+    italic,
+    uppercase,
+    className,
+    shrink,
+  })}
+  {...props}
+>
+  <slot />
+</Component>

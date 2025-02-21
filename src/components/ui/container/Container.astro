@@ -1,0 +1,26 @@
+---
+import { cva, type VariantProps } from "class-variance-authority";
+import type { HTMLAttributes } from "astro/types";
+import styles from "./Container.module.css";
+
+const cvaVariants = cva(styles.container, {
+  variants: {
+    variant: {
+      default: styles.default,
+      narrow: styles.narrow,
+      fluid: styles.fluid,
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
+
+type Props = HTMLAttributes<"div"> & VariantProps<typeof cvaVariants>;
+
+const { class: className = "", variant, ...props } = Astro.props as Props;
+---
+
+<div class={cvaVariants({ variant, className })} {...props}>
+  <slot />
+</div>

@@ -1,0 +1,211 @@
+---
+import Container from "./ui/container/Container.astro";
+import Button from "./ui/button/Button.astro";
+import Flex from "./ui/flex/Flex.astro";
+import Chip from "./ui/chip/Chip.astro";
+import Link from "./ui/link/Link.astro";
+import Header from "./ui/header/Header.astro";
+import Icon from "./ui/icon/Icon.astro";
+import Menu from "./Menu.astro";
+import MobileMenu from "./MobileMenu.astro";
+
+import styles from "./MainHeader.module.css";
+import logo from "../assets/logo.webp";
+---
+
+<Header position="sticky" class:list={["header", styles.header]}>
+  <Container class:list={["container", styles.columns]}>
+    <Flex>
+      <div class={styles.logo}>
+        <img src={logo.src} alt="Oliv" />
+      </div>
+      <Chip variant="danger" label="We are hiring" />
+    </Flex>
+    <Flex justify="end" align="center">
+      <nav class:list={["desktop-only", styles.nav]}>
+        <Link href="/work">Work</Link>
+        <Link href="/services">Services</Link>
+        <Link href="/about">About</Link>
+        <Link href="/blog">Blog</Link>
+        <Link href="#" id="menu-trigger">
+          Pages <Icon icon="arrow-down" size="16" />
+        </Link>
+      </nav>
+      <Button class={styles.cta}> Let's Talk </Button>
+      <Button id="mobile-menu-trigger" variant="ghost" class="desktop-hidden">
+        <Icon
+          id="hamburger-icon"
+          class="hamburger-icon"
+          icon="hamburger"
+          size="24"
+        />
+      </Button>
+    </Flex>
+  </Container>
+  <Menu />
+  <MobileMenu />
+</Header>
+
+<script>
+  const headerElement = document.querySelector(".header") as HTMLElement;
+  let exceededOffset = false;
+
+  const scrollDownUp = () => {
+    let prevPos = Math.floor(document.body.getBoundingClientRect().y);
+    return () => {
+      const scrollY = Math.floor(document.body.getBoundingClientRect().y);
+      const currentDirection = prevPos >= scrollY ? "DOWN" : "UP";
+      prevPos = scrollY;
+      return currentDirection;
+    };
+  };
+
+  const getScrollOffset = (offset: number) => {
+    return offset * -1 > Math.floor(document.body.getBoundingClientRect().y);
+  };
+
+  let scrollUpDownRef = scrollDownUp();
+  let prevDirection = "";
+  const showHideHeader = () => {
+    const currentDirection = scrollUpDownRef();
+    if (prevDirection !== currentDirection && exceededOffset) {
+      prevDirection = currentDirection;
+      if (currentDirection === "DOWN") {
+        if (!headerElement.classList.contains("header-hidden")) {
+          headerElement.classList.add("header-hidden");
+        }
+      } else {
+        if (headerElement.classList.contains("header-hidden")) {
+          headerElement.classList.remove("header-hidden");
+        }
+      }
+    }
+  };
+
+  const stickyHeader = () => {
+    if (headerElement) {
+      const sticky = headerElement.offsetTop;
+      if (window.scrollY > sticky) {
+        if (!headerElement.classList.contains("sticky")) {
+          headerElement.classList.add("sticky");
+        }
+      } else {
+        if (headerElement.classList.contains("sticky")) {
+          headerElement.classList.remove("sticky");
+        }
+      }
+    }
+  };
+
+  window.addEventListener("scroll", () => {
+    stickyHeader();
+    showHideHeader();
+    exceededOffset = getScrollOffset(700);
+  });
+</script>
+<style>
+  .hamburger-icon :global(path):nth-child(1) {
+    animation-duration: 500ms;
+    animation-fill-mode: both;
+    transform-origin: 12px 12px;
+    /* transform-origin: 0 25%; */
+  }
+
+  .hamburger-icon.opened :global(path):nth-child(1) {
+    animation-name: animateTop;
+  }
+
+  .hamburger-icon.closed :global(path):nth-child(1) {
+    animation-name: animateTopBack;
+  }
+
+  @keyframes animateTop {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(45deg);
+    }
+  }
+
+  @keyframes animateTopBack {
+    from {
+      transform: rotate(45deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  .hamburger-icon.opened :global(path):nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-icon.closed :global(path):nth-child(2) {
+    opacity: 1;
+    animation: middleBack 500ms ease-out forwards;
+  }
+
+  @keyframes middleBack {
+    0% {
+      opacity: 0;
+    }
+    90% {
+      opacity: 1;
+    }
+  }
+
+  .hamburger-icon :global(path):nth-child(3) {
+    animation-duration: 500ms;
+    animation-fill-mode: both;
+    /* transform-origin: 2px 16px; */
+    transform-origin: 10% 66%;
+  }
+
+  .hamburger-icon.opened :global(path):nth-child(3) {
+    animation-name: animateBottom;
+  }
+
+  .hamburger-icon.closed :global(path):nth-child(3) {
+    animation-name: animateBottomBack;
+  }
+
+  @keyframes animateBottom {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-45deg);
+    }
+  }
+
+  @keyframes animateBottomBack {
+    from {
+      transform: rotate(-45deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+</style>
+<style>
+  .header {
+    position: fixed;
+    z-index: 2;
+  }
+
+  .header .container {
+    background-color: hsl(var(--background));
+  }
+
+  .sticky {
+    backdrop-filter: blur(1rem);
+    z-index: 1;
+    translate: 0 0;
+    transition: all 200ms ease-in-out;
+  }
+
+  .header-hidden {
+    translate: 0 -100%;
+  }
+</style>

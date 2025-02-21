@@ -1,0 +1,70 @@
+.link {
+  position: relative;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-underline-offset: .2rem;
+  /* color: color-mix(in hsl, currentColor, #ffffff 10%); */
+}
+
+.link:focus-visible {
+  outline: 4px solid hsl(var(--ring));
+  outline-offset: 5px;
+}
+
+.underline {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  bottom: -0.25rem;
+}
+
+.underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: -100%;
+  background-color: currentColor;
+
+  animation-duration: 100ms;
+  animation-direction: alternate;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+}
+
+.link:hover .underline::after {
+  animation-name: underlined;
+  animation-fill-mode: forwards;
+}
+
+.link:not(:hover) .underline::after {
+  animation-name: hide-underline;
+
+}
+
+@keyframes underlined {
+  from {
+    left: -100%;
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+@keyframes hide-underline {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: 100%;
+  }
+}

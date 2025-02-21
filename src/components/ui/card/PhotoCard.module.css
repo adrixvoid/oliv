@@ -1,0 +1,51 @@
+.card {
+  --padding: 1rem 0;
+  color: hsl(var(--muted-foreground));
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.imageContainer {
+  overflow: hidden;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@media (width >=810px) {
+  .imageContainer {
+    cursor: url('./icons/north_east.svg'), auto;
+  }
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  transition: scale 200ms ease-out;
+}
+
+.image:hover {
+  scale: 1.2;
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: 300;
+  margin: 0;
+}
+
+.description {
+  padding: var(--padding);
+  color: hsl(var(--muted-foreground));
+}
+
+.description p {
+  margin: 0;
+}
+
+.columns {
+  padding: var(--padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

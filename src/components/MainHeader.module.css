@@ -1,0 +1,33 @@
+.columns {
+  padding-top: 2.5rem;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 84px;
+  height: 25px;
+}
+
+.nav {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav a {
+  color: hsl(var(--link));
+  text-decoration: none;
+}

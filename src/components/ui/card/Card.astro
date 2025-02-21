@@ -1,0 +1,42 @@
+---
+import { cva, type VariantProps } from "class-variance-authority";
+import styles from "./Card.module.css";
+import type { HTMLAttributes } from "astro/types";
+
+export const cardVariants = cva(styles.card, {
+  variants: {
+    variant: {
+      default: styles.default,
+      primary: styles.primary,
+      green: styles.green,
+      yellow: styles.yellow,
+      red: styles.red,
+      blue: styles.blue,
+      muted: styles.muted,
+    },
+    width: {
+      ["full-width"]: styles["full-width"],
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
+
+export type CardProps = HTMLAttributes<"div"> &
+  VariantProps<typeof cardVariants> & {
+    label: string;
+    class?: string;
+  };
+
+const {
+  label,
+  variant,
+  class: className = "",
+  ...props
+} = Astro.props as CardProps;
+---
+
+<div class={cardVariants({ variant, className })} {...props}>
+  <slot />
+</div>

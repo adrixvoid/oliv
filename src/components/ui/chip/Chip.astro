@@ -1,0 +1,83 @@
+---
+import { cva, type VariantProps } from "class-variance-authority";
+import type { HTMLAttributes } from "astro/types";
+
+import styles from "./Chip.module.css";
+
+export const chipVariants = cva(styles.chip, {
+  variants: {
+    variant: {
+      default: styles.default,
+      primary: styles.primary,
+      outlined: styles.outlined,
+      muted: styles.muted,
+      info: styles.info,
+      success: styles.success,
+      warning: styles.warning,
+      danger: styles.danger,
+    },
+    size: {
+      md: styles.medium,
+      sm: styles.small,
+      lg: styles.large,
+      xl: styles.xlarge,
+    },
+    width: {
+      ["full-width"]: styles["full-width"],
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+    size: "md",
+  },
+});
+
+export type ChipProps = HTMLAttributes<"div"> &
+  VariantProps<typeof chipVariants> & {
+    label: string;
+    onClick?: () => void;
+    onDismiss?: () => void;
+    class?: string;
+    icon?: string;
+    role?: "button" | "status";
+  };
+
+const {
+  label,
+  variant,
+  role = "status",
+  size,
+  icon,
+  onClick,
+  onDismiss,
+  class: className = "",
+  ...props
+} = Astro.props as ChipProps;
+
+const chipClasses = chipVariants({
+  variant,
+  [styles.clickable]: !!onClick,
+  [styles.dismissible]: !!onDismiss,
+  className,
+});
+
+// role
+// onClick={onClick}
+// onClick={(e) => {
+//   e.stopPropagation();
+//   onDismiss();
+// }}
+// {/* <X size={14} /> */}
+---
+
+<div class={chipClasses} role={role} tabindex={0} {...props}>
+  {icon && <span>{icon}</span>}
+  <span class={styles.text}>{label}<slot /></span>
+  {
+    onDismiss && (
+      <button type="button" class={styles.dismissButton} aria-label="Dismiss">
+        X
+      </button>
+    )
+  }
+</div>

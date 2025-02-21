@@ -1,0 +1,152 @@
+---
+import Button from "./ui/button/Button.astro";
+import Container from "./ui/container/Container.astro";
+import Flex from "./ui/flex/Flex.astro";
+import Link from "./ui/link/Link.astro";
+import Text from "./ui/text/Text.astro";
+---
+
+<Container class="mobile-menu">
+  <div class="container">
+    <nav class="nav">
+      <ul>
+        <li><Link href="#">Home</Link></li>
+        <li><Link href="#">Services</Link></li>
+        <li><Link href="#">About</Link></li>
+        <li><Link href="#">Jobs</Link></li>
+        <li><Link href="#">Contact</Link></li>
+      </ul>
+    </nav>
+    <div class="footer">
+      <Button variant="inverse" fullWidth>More Templates</Button>
+      <Flex justify="between" align="center">
+        <Text>Design: © Made by Gola Templates</Text>
+        <Text>Dev: Adrian Lambrese</Text>
+        <Link href="#">Terms and Conditions</Link>
+      </Flex>
+    </div>
+  </div>
+</Container>
+
+<style>
+  .mobile-menu {
+    width: 100%;
+    background-color: hsl(var(--foreground));
+    z-index: 1;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    translate: -50% 0;
+    overflow: clip;
+    height: 0;
+    display: none;
+
+    interpolate-size: allow-keywords;
+    transition-behavior: allow-discrete;
+    transition-duration: 200ms;
+    transition-property: height, display;
+    animation-direction: alternate;
+    animation-timing-function: ease-out;
+  }
+
+  .container {
+    padding-block: 2rem;
+  }
+
+  .mobile-menu,
+  .mobile-menu a {
+    color: hsl(var(--background)) !important;
+  }
+
+  .mobile-menu hr {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid hsl(0, 0%, 95%, 0.1);
+    margin-bottom: 2rem;
+  }
+
+  .mobile-menu h6,
+  .mobile-menu ul li {
+    width: 100%;
+    line-height: 2.5rem;
+    text-align: center;
+  }
+
+  .mobile-menu ul li a {
+    font-size: clamp(1.125rem, 1.5, 1.5rem);
+    letter-spacing: 0.5;
+    text-transform: uppercase;
+  }
+
+  .mobile-menu .footer {
+    margin-top: 2rem;
+  }
+
+  .show-menu {
+    outline: 1px solid green;
+    display: block;
+    height: auto;
+
+    @starting-style {
+      height: 0;
+    }
+  }
+</style>
+
+<script>
+  const menuElement = document.querySelector(".mobile-menu");
+  const triggerElement = document.querySelector("#mobile-menu-trigger");
+  const hamburgerIcon = document.getElementById(
+    "hamburger-icon"
+  ) as HTMLElement;
+
+  const clickOutsideHandler = (event: MouseEvent) => {
+    if (event.target && menuElement) {
+      if (!menuElement.contains(event.target as Node)) toggleMenu();
+    }
+  };
+
+  const escapeHandler = (event: KeyboardEvent) => {
+    if (event.key === "Escape") {
+      toggleMenu();
+    }
+  };
+
+  const showMenu = () => {
+    if (!menuElement?.classList.contains("show-menu")) {
+      menuElement?.classList.add("show-menu");
+
+      setTimeout(() => {
+        document.addEventListener("keydown", escapeHandler);
+        document.addEventListener("click", clickOutsideHandler);
+        window.addEventListener("resize", hideMenu);
+      }, 0);
+    }
+  };
+
+  const hideMenu = () => {
+    if (menuElement?.classList.contains("show-menu")) {
+      document.removeEventListener("keydown", escapeHandler);
+      document.removeEventListener("click", clickOutsideHandler);
+      window.removeEventListener("resize", hideMenu);
+      menuElement?.classList.remove("show-menu");
+    }
+  };
+
+  const toggleMenu = () => {
+    if (!menuElement?.classList.contains("show-menu")) {
+      showMenu();
+      hamburgerIcon.classList.add("opened");
+      hamburgerIcon.classList.remove("closed");
+    } else {
+      hideMenu();
+      hamburgerIcon.classList.add("closed");
+      hamburgerIcon.classList.remove("opened");
+    }
+  };
+
+  triggerElement?.addEventListener("click", (event) => {
+    event.preventDefault();
+    toggleMenu();
+  });
+</script>

@@ -1,0 +1,35 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import styles from "./BrandingCard.module.css";
+import Card from "./Card.astro";
+import Heading from "../text/Heading.astro";
+
+export type BrandingCardProps = HTMLAttributes<"div"> & {
+  linkUrl: string;
+  linkLabel?: string;
+  image: string;
+  title: string;
+  class?: string;
+};
+
+const {
+  image,
+  title,
+  linkUrl,
+  linkLabel = "Read More",
+  class: className = "",
+  ...props
+} = Astro.props as BrandingCardProps;
+---
+
+<Card class={styles.brandingCard} {...props}>
+  <article>
+    <img class={styles.image} src={image} alt={title} />
+    <div class={styles.footer}>
+      <Heading element="h5" size="h5" class={styles.description}>
+        {title}
+      </Heading>
+      <a class={styles.link} href={linkUrl}>{linkLabel}</a>
+    </div>
+  </article>
+</Card>
