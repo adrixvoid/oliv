@@ -34,14 +34,16 @@ import logo from "../assets/logo.webp";
         </nav>
       </div>
       <Button animated={true} class={styles.cta}> Let's Talk </Button>
-      <Button id="mobile-menu-trigger" variant="ghost" class="desktop-hidden">
-        <Icon
-          id="hamburger-icon"
-          class="hamburger-icon"
-          icon="hamburger"
-          size="24"
-        />
-      </Button>
+      <div class="desktop-hidden">
+        <Button id="mobile-menu-trigger" variant="ghost">
+          <Icon
+            id="hamburger-icon"
+            class="hamburger-icon"
+            icon="hamburger"
+            size="24"
+          />
+        </Button>
+      </div>
     </Flex>
   </Container>
   <Menu />
