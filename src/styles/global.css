@@ -43,10 +43,19 @@ a {
     gap: 2.5rem;
   }
 
+  .grid-3-2center-desktop div:nth-child(1) {
+    grid-column-start: 2;
+    grid-column: 2 !important;
+  }
+
   .grid-3-2end-desktop {
     display: grid;
     grid-template-columns: 1fr 1fr 2fr;
     gap: 2.5rem;
+  }
+
+  .grid-3-2end-desktop div:nth-child(1) {
+    grid-column: 2 !important;
   }
 
   .grid-2-2end-desktop {
@@ -79,6 +88,10 @@ a {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 2rem;
+  }
+
+  .grid-2-end-tablet div:nth-child(1) {
+    grid-column: 2 !important;
   }
 }
 
