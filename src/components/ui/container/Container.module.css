@@ -5,7 +5,7 @@
 */
 .container {
   margin: 0 auto;
-  padding: 0 1rem;
+  padding-inline: 1rem;
   position: relative;
   width: 100%;
   max-width: 90vw;
@@ -13,21 +13,21 @@
 
 @media (width > 810px) {
   .container {
-    padding: 0 2rem;
+    padding-inline: 2rem;
   }
 }
 
 @media (810px < width < 1280px) {
   .container {
     margin: 0 auto;
-    padding: 0 4rem;
+    padding-inline: 4rem;
   }
 }
 
 @media (min-width: 1280px) {
   .container {
     max-width: 1440px;
-    padding: 0 2.5rem;
+    padding-inline: 2.5rem;
   }
 }
 
