@@ -16,15 +16,12 @@
     font-weight: 400;
     outline-color: hsl(var(--ring));
 
-    will-change: color, background-color, border-color, text-decoration-color, box-shadow, fill, stroke;
+    will-change: color, background-color, border-color, scale, fill, stroke;
+    transition-property: scale;
     transition-duration: 200ms;
     transition-timing-function: cubic-bezier(.4, 0, .2, 1);
 
     fill: currentcolor;
-}
-
-.badge:has(>svg) {
-    transition: none;
 }
 
 .badge:active {

@@ -1,6 +1,35 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import { buttonVariants, type ButtonVariants } from "./Button.cva";
+import { cva, type VariantProps } from "class-variance-authority";
+import styles from "./Button.module.css";
+
+export const buttonVariants = cva(styles.button, {
+  variants: {
+    variant: {
+      default: styles.default,
+      primary: styles.primary,
+      ghost: styles.ghost,
+    },
+    size: {
+      md: styles.medium,
+      sm: styles.small,
+      lg: styles.large,
+      xl: styles.xlarge,
+    },
+    fullWidth: {
+      true: styles["full-width"],
+    },
+    animated: {
+      true: styles.animated
+    }
+  },
+  defaultVariants: {
+    variant: "default",
+    size: "md",
+  },
+});
+
+export type ButtonVariants = VariantProps<typeof buttonVariants>;
 
 export type ButtonProps = (HTMLAttributes<"a"> | HTMLAttributes<"button">) &
   ButtonVariants & {
@@ -13,25 +42,50 @@ const {
   variant,
   size,
   fullWidth,
+  animated,
   class: className = "",
   ...props
 } = Astro.props as ButtonProps;
+
+const classNames = buttonVariants({ animated, variant, size, fullWidth, className });
 ---
 
 {
   asLink ? (
     <a
-      class={buttonVariants({ variant, size, fullWidth, className })}
+      class={classNames}
       {...(props as HTMLAttributes<"a">)}
     >
-      <slot />
+      {
+        animated ? (
+          <span class={styles.text} aria-hidden="true">
+          <slot />
+        </span>
+        <span class={styles.textGhost} aria-hidden="true">
+          <slot />
+        </span>
+        ) : (
+          <slot />
+        )
+      }
     </a>
   ) : (
     <button
-      class={buttonVariants({ variant, size, fullWidth, className })}
+      class={classNames}
       {...(props as HTMLAttributes<"button">)}
     >
-      <slot />
+      {
+        animated ? (
+          <span class={styles.text} aria-hidden="true">
+          <slot />
+        </span>
+        <span class={styles.textGhost} aria-hidden="true">
+          <slot />
+        </span>
+        ) : (
+          <slot />
+        )
+      }
     </button>
   )
 }
