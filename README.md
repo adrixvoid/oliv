@@ -8,6 +8,7 @@ Framer Template https://oliv-template.framer.website
 ![just-the-basics](./public/preview-framer.jpg)
 
 Github Repository https://github.com/adrixvoid/oliv
+Live Preview https://oliv-sepia.vercel.app/
 ![just-the-basics](./public/preview-astro-full.png)
 
 ## How to run 🚀
